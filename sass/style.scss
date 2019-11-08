@@ -1,0 +1,52 @@
+$blue : #173438; // primary
+$gray-600 : #4E7867; //secondary
+$white : #04926D; // body background
+$green: #C1C44D;
+
+$btn-line-height-lg : 40px;
+// option A - bringing everything from bootstrap, makes folder huge
+// @import 'bootstrap-4.3.1/scss/bootstrap';
+
+
+// Option B: Include parts of Bootstrap
+
+// Required
+@import "bootstrap-4.3.1/scss/functions";
+@import "bootstrap-4.3.1/scss/variables";
+@import "bootstrap-4.3.1/scss/mixins";
+
+//optional
+@import "bootstrap-4.3.1/scss/utilities";
+@import "bootstrap-4.3.1/scss/reboot";
+@import "bootstrap-4.3.1/scss/grid";
+@import "bootstrap-4.3.1/scss/buttons";
+@import "bootstrap-4.3.1/scss/images";
+@import "bootstrap-4.3.1/scss/jumbotron";
+@import "bootstrap-4.3.1/scss/transitions";
+@import "bootstrap-4.3.1/scss/type";
+
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.myBtn{
+  display:block;
+  margin:auto;
+}
+.btnRow{
+  width: 50%;
+  margin:auto;
+}
+
+/* required height for Google Map Container*/
+
+#map{
+  width: 100%;
+  height: 700px;
+  background-color: #173438;
+  margin-top: 100px;
+}
