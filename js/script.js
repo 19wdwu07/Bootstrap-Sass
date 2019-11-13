@@ -1,5 +1,11 @@
 console.log('Bootstrap custom theme');
 
+//accessiing apiKey from config.json
+var myKey = JSON.parse(apiKey); //convert JSON data into js object
+ console.log (myKey[0].key);
+
+
+
 $('#map').hide();
 $('#home').show();
 
@@ -20,7 +26,11 @@ $(document).ready(function(){
 
 
 });
-
+//dynamically creating the script element and
+//giving src attribute the google plugin with key from external json file
+var script = document.createElement('script');
+script.src='https://maps.googleapis.com/maps/api/js?key='+ myKey[0].key + '&callback=initMap';
+document.getElementsByTagName('body')[0].appendChild(script); //appending to the body of index.html
 // var map;
 function initMap() {
 
@@ -54,10 +64,23 @@ var napier = {lat:-39.4928 ,lng: 176.9120};
         '</div>'+
         '</div>';
 
+  var contentString2 = '<div id="content" class="bg-success text-primary">'+
+          '<h1 id="firstHeading" class="firstHeading">Christchurch</h1>'+
+        '<div id="bodyContent">'+
+        '<h3><b>Christchurch i-SITE Visitor Information Centre</h3>'+
+        '<h6>28 Worcester Blvd</br>Christchurch Central City</br>Christchurch 8011</br>New Zealand</br>'+
+        'Phone:_64 3-379 9629</br>Email:  info@christchurchnz.com</br></h6>'+
+        '<h3>Opening hours </h3>'+
+        '<h6>Monday to Friday: 9.00am - 5.00pm</br>Saturday : 9am - 5pm</b>Sunday Closed</h6>'+
+        '</div>'+
+        '</div>';
+
     var infowindow1 = new google.maps.InfoWindow({
       content: contentString1
     });
-
+    var infowindow2 = new google.maps.InfoWindow({
+      content: contentString2
+    });
     var marker1 = new google.maps.Marker({
       position: wellington,
       map: map,
@@ -65,6 +88,14 @@ var napier = {lat:-39.4928 ,lng: 176.9120};
     });
     marker1.addListener('click', function() {
       infowindow1.open(map, marker1);
+    });
+    var marker2 = new google.maps.Marker({
+      position: christchurch,
+      map: map,
+      title: 'Christchurch'
+    });
+    marker2.addListener('click', function() {
+      infowindow2.open(map, marker2);
     });
 
 
